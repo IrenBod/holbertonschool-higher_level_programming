@@ -6,4 +6,4 @@ def print_matrix_integer(matrix=[[]]):
                 print("{:d}".format(element), end=" ")
             else:
                 print("{:d}".format(element))
-        print()  # Печатаем новую строку после каждого ряда, даже если строка пустая
+        print()
