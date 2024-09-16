@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-# Definition of the Square class
+"""
+Class square with private instance attribute 'size'
+And check if size is a integer and not < 0
+"""
+
+
 class Square:
     """
     A class that represents a square with a private size attribute.
