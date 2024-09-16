@@ -13,7 +13,7 @@ class Square:
         Initializes a square with an optional size.
 
         Args:
-        size (int): The size of the square. Default is 0.
+        size (int): The size of the square. Default is 0
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
