@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-"""Creates a class Square"""
+"""
+Class square with private instance attribute 'size'
+And check if size is a integer and not < 0
+"""
 
 
 class Square:
