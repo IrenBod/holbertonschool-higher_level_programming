@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 """
-Class square with private instance attribute 'size'
-And check if size is a integer and not < 0
+This module defines a class Square that represents a square
+with a private size attribute. The size attribute must be a
+positive integer, and the class checks this upon instantiation.
 """
 
 
@@ -13,7 +14,7 @@ class Square:
         Initializes a square with an optional size.
 
         Args:
-        size (int): The size of the square. Default is 0
+            size (int): The size of the square. Default is 0.
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
