@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Class square with private instance attribute 'size'
 And check if size is a integer and not < 0
@@ -12,19 +13,11 @@ class Square:
     def __init__(self, size=0):
         """
         Initializes a square with an optional size.
-        
         Args:
             size (int): The size of the square. Default is 0.
-        
-        Exceptions:
-            TypeError: If size is not an integer.
-            ValueError: If size is less than 0.
         """
-        # Check if size is an integer
-        if not isinstance(size, int):
+        if not isinstance(size, int):# Check if size is an integer
             raise TypeError("size must be an integer")
-        # Check if size >= 0
-        if size < 0:
+        if size < 0:# Check if size >= 0
             raise ValueError("size must be >=0")
-        # Set the private attribute __size
-        self.__size = size
+        self.__size = size# Set the private attribute __size
