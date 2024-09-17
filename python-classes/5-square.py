@@ -1,15 +1,22 @@
 #!/usr/bin/python3
+"""
+This module defines a Square class that represents a square
+and includes methods to calculate its area and print it using
+the '#' character.
+"""
+
 
 class Square:
-
-    """Represents a square."""
+    """
+    Defines a square with a given size.
+    """
 
     def __init__(self, size=0):
         """
-        Initializes a new square.
+        Initializes the square.
 
         Args:
-            size (int): The size of the square (default is 0).
+            size (int): Size of the square, default is 0.
         """
         self.size = size
 
@@ -29,7 +36,7 @@ class Square:
         Sets the size of the square.
 
         Args:
-            value (int): The size to set for the square.
+            value (int): Size of the square.
 
         Raises:
             TypeError: If size is not an integer.
@@ -43,20 +50,21 @@ class Square:
 
     def area(self):
         """
-        Calculates the area of the square.
+        Returns the current square area.
 
         Returns:
             int: The area of the square.
         """
-        return self.size * self.size
+        return self.__size * self.__size
 
     def my_print(self):
         """
-        Prints the square with the character #.
-        If the size is 0, prints an empty line.
+        Prints in stdout the square with the character #.
+
+        If size is 0, prints an empty line.
         """
-        if self.size == 0:
+        if self.__size == 0:
             print("")
         else:
-            for _ in range(self.size):
-                print("#" * self.size)
+            for i in range(self.__size):
+                print("#" * self.__size)
