@@ -7,10 +7,11 @@ width and height, and provides methods to calculate the area and perimeter.
 It also defines a way to print the rectangle using the '#' character.
 """
 
+
 class Rectangle:
     """
     A class used to represent a Rectangle.
-    
+
     Attributes:
         width (int): The width of the rectangle (default is 0).
         height (int): The height of the rectangle (default is 0).
@@ -97,7 +98,8 @@ class Rectangle:
         Calculates the perimeter of the rectangle.
 
         Returns:
-            int: The perimeter of the rectangle, or 0 if either width or height is 0.
+            int: The perimeter of the rectangle,
+            or 0 if either width or height is 0.
         """
         if self.width == 0 or self.height == 0:
             return 0
