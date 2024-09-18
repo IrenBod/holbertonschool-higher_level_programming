@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+This module defines a Rectangle class.
+
+The Rectangle class allows you to create a rectangle with specified
+width and height, and provides methods to calculate the area and perimeter.
+It also defines a way to print the rectangle using the '#' character.
+"""
+
 class Rectangle:
     """
     A class used to represent a Rectangle.
-
+    
     Attributes:
         width (int): The width of the rectangle (default is 0).
         height (int): The height of the rectangle (default is 0).
@@ -21,7 +29,12 @@ class Rectangle:
 
     @property
     def width(self):
-        """Retrieves the width of the rectangle."""
+        """
+        Retrieves the width of the rectangle.
+
+        Returns:
+            int: The width of the rectangle.
+        """
         return self.__width
 
     @width.setter
@@ -44,7 +57,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """Retrieves the height of the rectangle."""
+        """
+        Retrieves the height of the rectangle.
+
+        Returns:
+            int: The height of the rectangle.
+        """
         return self.__height
 
     @height.setter
@@ -79,12 +97,11 @@ class Rectangle:
         Calculates the perimeter of the rectangle.
 
         Returns:
-            int: The perimeter of the rectangle,
-            or 0 if either width or height is 0.
+            int: The perimeter of the rectangle, or 0 if either width or height is 0.
         """
         if self.width == 0 or self.height == 0:
             return 0
-        return (self.width + self.height) * 2
+        return 2 * (self.width + self.height)
 
     def __str__(self):
         """
@@ -92,10 +109,13 @@ class Rectangle:
 
         If the width or height is 0, returns an empty string. Otherwise,
         returns a rectangle made of the character '#'.
+
+        Returns:
+            str: The rectangle as a string.
         """
         if self.width == 0 or self.height == 0:
             return ""
-        result = []
+        rect = []
         for i in range(self.height):
-            result.append("#" * self.width)
-        return "\n".join(result)
+            rect.append("#" * self.width)
+        return "\n".join(rect)
