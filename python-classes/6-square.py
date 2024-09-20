@@ -1,3 +1,13 @@
+#!/usr/bin/python3
+
+"""
+This module defines a Square class.
+The Square class allows you to create a square with a given size and position.
+It includes methods to calculate the area and print the square with the '#'
+character, considering the position of the square.
+"""
+
+
 class Square:
     """
     This class defines a square with a given size and position.
