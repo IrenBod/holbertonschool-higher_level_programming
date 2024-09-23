@@ -47,3 +47,7 @@
 >>> my_list = MyList([4, 4, 2, 2, 1])
 >>> my_list.print_sorted()
 [1, 2, 2, 4, 4]
+
+>>> my_list = MyList(["apple", "banana", "cherry"])
+>>> my_list.print_sorted()
+['apple', 'banana', 'cherry']
