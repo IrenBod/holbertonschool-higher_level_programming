@@ -38,7 +38,6 @@ class Square(Rectangle):
         """
         return self.__size * self.__size
 
-
     def __str__(self):
         """
         Returns a string representation of the square.
