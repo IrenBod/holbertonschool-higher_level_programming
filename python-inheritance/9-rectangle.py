@@ -1,25 +1,20 @@
 #!/usr/bin/python3
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
 """
 This module defines the Rectangle class, which inherits from BaseGeometry.
 """
 
+# Импортируем класс BaseGeometry из 8-rectangle.py
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 
 class Rectangle(BaseGeometry):
     """
-    A class used to represent a rectangle, inheriting from BaseGeometry.
-
-    Attributes:
-        __width (int): The width of the rectangle
-        (must be a positive integer).
-        __height (int): The height of the rectangle
-        (must be a positive integer).
+    Represents a rectangle, inheriting from the BaseGeometry class.
     """
 
     def __init__(self, width, height):
         """
-        Initializes a Rectangle with width and height,
-        validated as positive integers.
+        Initializes a rectangle with a specified width and height.
 
         Args:
             width (int): The width of the rectangle.
@@ -48,7 +43,7 @@ class Rectangle(BaseGeometry):
         Returns a string representation of the rectangle.
 
         Returns:
-            str: The string representation in the
-            format [Rectangle] <width>/<height>.
+            str: The string representation in the format
+            [Rectangle] <width>/<height>.
         """
-        return f"[Rectangle] {self.__width}/{self.__height}"
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
