@@ -5,7 +5,6 @@ This module defines the Square class, which inherits from Rectangle.
 
 Rectangle = __import__('9-rectangle').Rectangle
 
-
 class Square(Rectangle):
     """
     Represents a square, inheriting from the Rectangle class.
@@ -36,7 +35,7 @@ class Square(Rectangle):
         Returns:
             int: The area of the square (size * size).
         """
-        return self.__size * self.__size
+        return super().area()
 
     def __str__(self):
         """
@@ -44,6 +43,6 @@ class Square(Rectangle):
 
         Returns:
         str: The string representation in the format
-        [Square] <size>.
+        [Square] <size>/<size>.
         """
-        return "[Square] {}/{}".format(self.__size)
+        return "[Square] {}/{}".format(self.__size, self.__size)
