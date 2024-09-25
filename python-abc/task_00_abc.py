@@ -2,6 +2,7 @@
 """
 This module defines an abstract class Animal and its subclasses Dog and Cat.
 """
+
 from abc import ABC, abstractmethod
 
 
