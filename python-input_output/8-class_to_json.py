@@ -2,7 +2,6 @@
 """
 Returns the dictionary description for JSON serialization.
 """
-import json
 
 
 def class_to_json(obj):
