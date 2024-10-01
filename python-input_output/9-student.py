@@ -14,14 +14,15 @@ class Student:
             last_name (str): The last name of the student.
             age (int): The age of the student.
         """
-
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self):
+        """
+        Retrieve the dictionary representation of the Student instance.
+
+        Returns:
+            dict: A dictionary with the student's attributes.
+        """
         return self.__dict__
-
-
-student = Student("John", "Doe", 20)
-print(student.to_json())
