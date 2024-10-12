@@ -4,7 +4,6 @@ import json
 from http.server import HTTPServer
 
 
-
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data":
@@ -25,6 +24,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write("Hello, this is a simple API!".encode('utf-8'))
 
-server = HTTPServer(("localhost",8000), MyHandler)
+
+server = HTTPServer(("localhost", 8000), MyHandler)
 
 server.serve_forever()
