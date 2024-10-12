@@ -3,6 +3,7 @@ import http.server
 import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+
 class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
@@ -31,6 +32,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write("Endpoint not found".encode('utf-8'))
+
 
 def run(server_class=HTTPServer, handler_class=MyHandler):
     server_address = ('', 8000)
