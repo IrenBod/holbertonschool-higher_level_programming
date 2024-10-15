@@ -40,26 +40,16 @@ def get_users(username):
 @app.route('/add_user', methods=['POST'])
 def add_users():
     data = request.get_json()
+    if username:
+        username = data.get("username")
+        name = data.get("name")
+        age = data.get("age")
+        city = data.get("city")
 
-    username = data.get("username")
-    name = data.get("name")
-    age = data.get("age")
-    city = data.get("city")
-
-    if not username or not name or not age or not city:
+        users[username] = {"username": username, "name": name, "age": age, "city": city}
+        return jsonify({"message": "User added", "user": users[username]}), 201
+    else:
         return jsonify({"error": "Missing information"}), 400
-
-    users[username] = {
-        "username": username,
-        "name": name,
-        "age": age,
-        "city": city
-    }
-
-    return jsonify({
-        "message": "User added",
-        "user": users[username]
-    }), 201
 
 
 if __name__ == "__main__":
