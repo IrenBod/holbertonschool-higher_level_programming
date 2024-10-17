@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""This module defines basics of susage of Flask."""
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -41,6 +44,7 @@ def add_user():
             "message": "User added",
             "user": new_user
         }), 201
+
 
 if __name__ == "__main__":
     app.run()
