@@ -26,18 +26,20 @@ jwt = JWTManager(app)
 # la creation d'object d'autentification
 auth = HTTPBasicAuth()
 
+app.config["SECRET_KEY"] = "myflasksecretkey"
+app.config["JWT_SECRET_KEY"] = "myjwtsecretkey"
+
 
 users = {
-    "user1": generate_password_hash("password1"),
-    "admin": generate_password_hash("adminpassword")
+    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
+    "admin1": {"username": "admin1", "password": generate_password_hash("password"), "role": "admin"}
 }
 
 
 @auth.verify_password
 def verify_password(username, password):
-    print(f"Проверка пользователя: {username}, пароль: {password}")
-    if (username in users and
-            check_password_hash(users.get(username), password)):
+    print(f"Checking user: {username}, password: {password}")
+    if username in users and check_password_hash(users[username]["password"], password):
         return username
     return None
 
@@ -48,17 +50,13 @@ def protected():
     return "Acces granted!"
 
 
-app.config["SECRET_KEY"] = "myflasksecretkey"
-app.config["JWT_SECRET_KEY"] = "myjwtsecretkey"
-
-
 @app.route("/login", methods=["POST"])
 def login():
     username = request.json.get("username")
     password = request.json.get("password")
     if (username not in users or not
-            check_password_hash(users[username], password)):
-        return jsonify({"msg": "Bad username or passeword"}), 401
+            check_password_hash(users[username]["password"], password)):
+        return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
