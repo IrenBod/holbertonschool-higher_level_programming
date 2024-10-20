@@ -52,8 +52,9 @@ def protected():
 
 @app.route("/login", methods=["POST"])
 def login():
-    username = request.json.get("username")
-    password = request.json.get("password")
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
     if (username not in users or not
             check_password_hash(users[username]["password"], password)):
         return jsonify({"msg": "Bad username or password"}), 401
@@ -65,7 +66,7 @@ def login():
 @app.route("/jwt-protected", methods=["GET"])
 @jwt_required()
 def protected_route():
-    return jsonify(message="JWT Auth: Acces Granted!"), 200
+    return "JWT Auth: Access Granted", 200
 
 
 @app.route("/admin-only", methods=["GET"])
