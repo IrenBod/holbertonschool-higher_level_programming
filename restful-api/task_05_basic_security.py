@@ -1,40 +1,26 @@
-#!/usr/bin/env python3
-# Ce script Flask fournit une API sécurisée avec authentification JWT.
-# Il inclut des routes protégées nécessitant une authentification utilisateur.
-
-
-from flask import Flask  # import de la biblioteque framework pour creer les
-from flask import jsonify
-from flask import request
-
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
-# import de la biblioteque d'autentification
+from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
-# Importation de la fonction pour générer un mot de passe haché
-from werkzeug.security import generate_password_hash
-# Importation de la fonction pour vérifier si un mot de passe
-# correspond à son hachage
-from werkzeug.security import check_password_hash
+from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from werkzeug.security import generate_password_hash, check_password_hash
 
-# la creation d'application flask pour creer les decorateurs
+
 app = Flask(__name__)
-# La creattion JWT manager
+
+app.config["SECRET_KEY"] = "test"
+app.config['JWT_SECRET_KEY'] = "test"
+
 jwt = JWTManager(app)
-# la creation d'object d'autentification
 auth = HTTPBasicAuth()
 
-app.config["SECRET_KEY"] = "myflasksecretkey"
-app.config["JWT_SECRET_KEY"] = "myjwtsecretkey"
-
-
+# username : username | password : crypted_password | role : user role
 users = {
-    "user1": {"username": "user1", "password":
-              generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1", "password":
-               generate_password_hash("password"), "role": "admin"}
+    "user1": {"username": "user1",
+              "password": generate_password_hash("password"),
+              "role": "user"},
+    "admin1": {"username": "admin1",
+               "password": generate_password_hash("password"),
+               "role": "admin"}
 }
 
 
@@ -46,38 +32,45 @@ def verify_password(username, password):
     return None
 
 
-@app.route("/basic-protected")
+@app.route('/basic-protected')
 @auth.login_required
-def protected():
-    return "Basic Auth: Access Granted!", 200
+def basic_protected():
+    return "Basic Auth: Access Granted", 200
 
 
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
-    data = request.get_json()
-    username = data.get("username")
-    password = data.get("password")
-    if (username not in users or not
-            check_password_hash(users[username]["password"], password)):
-        return jsonify({"msg": "Bad username or password"}), 401
+    username = request.json["username"]
+    password = request.json["password"]
 
-    access_token = create_access_token(identity={"username": username, "role": users[username]["role"]})
-    return jsonify(access_token=access_token)
+    user = users.get(username)
+
+    if not user:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    if not check_password_hash(user["password"], password):
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    access_token = create_access_token(
+        identity={"username": username, "role": user["role"]})
+    return jsonify(access_token=access_token), 200
 
 
-@app.route("/jwt-protected", methods=["GET"])
+@app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
-def protected_route():
+def jwt_protected():
     return "JWT Auth: Access Granted", 200
 
 
-@app.route("/admin-only", methods=["GET"])
+@app.route('/admin-only', methods=['GET'])
 @jwt_required()
 def admin_only():
-    current_user = get_jwt_identity()
-    if current_user["role"] != "admin":
+    jwt_data = get_jwt_identity()
+
+    if jwt_data['role'] == 'admin':
+        return "Admin Access: Granted", 200
+    else:
         return jsonify({"error": "Admin access required"}), 403
-    return jsonify(message="Admin Access: Granted!"), 200
 
 
 @jwt.unauthorized_loader
@@ -105,5 +98,5 @@ def handle_needs_fresh_token_error(err):
     return jsonify({"error": "Fresh token required"}), 401
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
