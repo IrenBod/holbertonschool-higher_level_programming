@@ -1,5 +1,5 @@
 -- Select 'title' from 'tv_shows' table and 'name' from 'tv_genres' table, renaming it as 'genre'
-SELECT tv_shows.title, tv_genres.name AS genre
+SELECT tv_shows.title, tv_genres.name
 FROM tv_shows
 
 -- Left join 'tv_shows' and 'tv_show_genres' tables to include all shows, even those without a genre
