@@ -1,38 +1,39 @@
 #!/usr/bin/python3
-import sys           # Import sys to handle command-line arguments
-import MySQLdb       # Import MySQLdb to connect to the MySQL database
+"""This module lists all states from the database."""
 
-# This block ensures the code only runs when the script is executed directly
+import MySQLdb
+import sys
+
 if __name__ == "__main__":
-    # Get command-line arguments: MySQL username, password, and database name
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    # Get command-line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
 
-    # Connect to the MySQL database
-    db = MySQLdb.connect(
-        host="localhost",    # Database server (localhost for local server)
-        user=username,       # MySQL username
-        passwd=password,     # MySQL password
-        db=database,         # Database name
-        port=3306            # MySQL port (default is 3306)
+    # Connection to the database
+    # Create a connexion object
+    connexion = MySQLdb.connect(
+        host="localhost",
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name,
+        port=3306,  # This is the default port
     )
 
-    # Create a cursor object to execute SQL queries
-    cursor = db.cursor()
+    # Create a cursor object
+    cursor = connexion.cursor()
 
-    # Execute SQL query to get all rows from "states" table, ordered by id
+    # Execute SQL query
+    # Display city starting with a N
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
-    # Fetch all results from the executed query
+    # Fetch All-at-Once
     states = cursor.fetchall()
 
-    # Loop through the results and print each row
+    # Display results
     for state in states:
-        print(state)  # Each row is displayed as a tuple, e.g., (1, 'California')
+        print(state)
 
-    # Close the cursor to free resources
+    # Close cursor and connexion
     cursor.close()
-
-    # Close the database connection
-    db.close()
+    connexion.close()
