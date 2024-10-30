@@ -22,14 +22,14 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute SQL query to get all rows from "states" table, ordered by id
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
     # Fetch all results from the executed query
-    rows = cursor.fetchall()
+    states = cursor.fetchall()
 
     # Loop through the results and print each row
-    for row in rows:
-        print(row)  # Each row is displayed as a tuple, e.g., (1, 'California')
+    for state in states:
+        print(state)  # Each row is displayed as a tuple, e.g., (1, 'California')
 
     # Close the cursor to free resources
     cursor.close()
