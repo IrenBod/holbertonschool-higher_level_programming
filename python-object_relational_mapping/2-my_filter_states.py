@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     # Execute SQL query to find states matching the specified name
     query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
-    cursor.execute(query, (state_name,))
+    cursor.execute(query)
 
     # Fetch and print all results
     states = cursor.fetchall()
