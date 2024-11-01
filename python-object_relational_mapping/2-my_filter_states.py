@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Жodule that displays all values matched the argument in the `states`."""
+"""Module that displays all values matched the argument in the `states`."""
 import MySQLdb
 import sys
 
@@ -23,8 +23,9 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute SQL query to find states matching the specified name
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name_searched)
-    cursor.execute(query)
+    query = "SELECT * FROM states WHERE name = '{}'\
+    ORDER BY id ASC".format(state_name_searched)
+    cursor.execute(db)
 
     # Fetch and print all results
     states = cursor.fetchall()
