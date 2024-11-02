@@ -9,15 +9,15 @@ import sys
 
 if __name__ == "__main__":
     # Get command-line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+    state_name_searched = sys.argv[4]
 
     # Connect to the MySQL database on localhost at port 3306
     db = MySQLdb.connect(host="localhost", 
-                         port=3306, user=username,
-                         passwd=password, db=database)
+                         port=3306, user=mysql_username,
+                         passwd=mysql_password, db=database_name)
 
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
