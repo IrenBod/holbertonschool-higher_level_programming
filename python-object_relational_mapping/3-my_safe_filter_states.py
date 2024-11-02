@@ -2,8 +2,10 @@
 import MySQLdb
 import sys
 
-# This script connects to a MySQL database and safely retrieves entries from the states table.
-# Usage: ./3-my_safe_filter_states.py <username> <password> <database> <state_name>
+# This script connects to a MySQL database and
+# safely retrieves entries from the states table.
+# Usage: ./3-my_safe_filter_states.py <username>
+# <password> <database> <state_name>
 
 if __name__ == "__main__":
     # Get command-line arguments
@@ -13,7 +15,9 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     # Connect to the MySQL database on localhost at port 3306
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+    db = MySQLdb.connect(host="localhost", 
+                         port=3306, user=username,
+                         passwd=password, db=database)
 
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
