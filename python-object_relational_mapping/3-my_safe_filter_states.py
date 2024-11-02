@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import MySQLdb
-import sys
-
 # This script connects to a MySQL database and
 # safely retrieves entries from the states table.
 # Usage: ./3-my_safe_filter_states.py <username>
 # <password> <database> <state_name>
+
+import MySQLdb
+import sys
 
 if __name__ == "__main__":
     # Get command-line arguments
