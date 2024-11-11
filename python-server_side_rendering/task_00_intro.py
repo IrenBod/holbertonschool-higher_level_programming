@@ -1,0 +1,1 @@
+def generate_invitations(template, attendees)
