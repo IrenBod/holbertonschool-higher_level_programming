@@ -116,15 +116,15 @@ class Square():
          followed by `size` '#' characters.
         """
 
-        if self.__size == 0:
-            print()
-            return
+        if self.__size != 0:
+            if self.position[1] > 0:
+                for _ in range(self.position[1]):
+                    print()
 
-        """Print vertical offset (empty lines)"""
-        for _ in range(self.position[1]):
+            for i in range(self.__size):
+                print(' ' * self.position[0], end='')
+                for j in range(self.__size):
+                    print("#", end='')
+                print()
+        else:
             print()
-
-        """Print the square with horizontal offset"""
-        for i in range(self.size):
-            print(" " * self.position[0], end="")
-            print("#" * self.size)
