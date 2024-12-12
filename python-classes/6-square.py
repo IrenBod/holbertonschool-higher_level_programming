@@ -116,7 +116,7 @@ class Square():
          followed by `size` '#' characters.
         """
 
-        if self.size == 0:
+        if self.__size == 0:
             print()
             return
 
