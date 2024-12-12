@@ -8,13 +8,11 @@ providing validation for their values through property getters and setters.
 Attributes:
 - width: Must be a non-negative integer.
 - height: Must be a non-negative integer.
-
-Methods:
-- None explicitly defined for functionality beyond initialization and validation.
 """
 
 class Rectangle():
     """Class that defines a rectangle with width and height."""
+    
     def __init__(self, width=0, height=0):
         """
         Initialize the rectangle with width and height.
@@ -64,7 +62,7 @@ class Rectangle():
         Returns:
         int: The current height of the rectangle.
         """
-        return self.__hight
+        return self.__height
     
     @height.setter
     def height(self, value):
