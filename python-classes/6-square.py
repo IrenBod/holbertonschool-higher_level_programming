@@ -20,7 +20,9 @@ Methods:
 
 
 class Square:
-    """Class that defines a square with a size property."""
+    """Class that defines a square with a size property
+    and position
+    """
 
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -60,12 +62,38 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
+    def area(self):
+        """
+        Calculate and return the area of the square.
+
+        Returns:
+        int: The area of the square (size * size).
+        """
+        return self.__size * self.__size
+
     @property
     def position(self):
+        """
+        Getter for the position of the square.
+
+        Returns:
+            tuple: A tuple of 2 positive integers specifying the position
+                where the square should be printed.
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
+        """
+        Setter for the position of the square.
+
+        Args:
+            value (tuple): A tuple of 2 positive integers
+            indicating the position.
+
+        Raises:
+            TypeError: If the value is not a tuple of 2 positive integers.
+        """
         if not isinstance(value, tuple):
             raise TypeError("position must be a tuple\
                             of 2 positive integers")
@@ -77,15 +105,6 @@ class Square:
                 raise TypeError("position must be a tuple\
                                 of 2 positive integers")
         self.__position = value
-
-    def area(self):
-        """
-        Calculate and return the area of the square.
-
-        Returns:
-        int: The area of the square (size * size).
-        """
-        return self.__size * self.__size
 
     def my_print(self):
         """
