@@ -10,9 +10,10 @@ Attributes:
 - height: Must be a non-negative integer.
 """
 
+
 class Rectangle():
     """Class that defines a rectangle with width and height."""
-    
+
     def __init__(self, width=0, height=0):
         """
         Initialize the rectangle with width and height.
@@ -33,7 +34,7 @@ class Rectangle():
         int: The current width of the rectangle.
         """
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         """
@@ -53,7 +54,7 @@ class Rectangle():
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
-    
+
     @property
     def height(self):
         """
@@ -63,7 +64,7 @@ class Rectangle():
         int: The current height of the rectangle.
         """
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         """
