@@ -119,11 +119,11 @@ class Square:
             print()
             return
 
-        # Print vertical offset (empty lines)
+        """Print vertical offset (empty lines)"""
         for _ in range(self.position[1]):
             print()
 
-        # Print the square with horizontal offset
+        """Print the square with horizontal offset"""
         for i in range(self.size):
-            print(" " * self.position[0], end="")  # Add spaces
-            print("#" * self.size)  # Print the '#' characters
+            print(" " * self.position[0], end="")
+            print("#" * self.size)
