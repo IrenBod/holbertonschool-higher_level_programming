@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 class SwimMixin:
     """Mixin class that provides swimming functionality."""
     def swim(self):

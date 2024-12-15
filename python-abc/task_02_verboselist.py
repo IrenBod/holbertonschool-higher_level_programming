@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 class VerboseList(list):
     """A custom list class that provides notifications for item additions and removals."""
 

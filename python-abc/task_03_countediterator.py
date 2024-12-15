@@ -1,7 +1,12 @@
+#!/usr/bin/python3
+"""
+A custom iterator that counts the number of iterations.
+"""
+
 class CountedIterator:
     """A custom iterator that tracks the number of items iterated."""
 
-    def __init__(self, iterable):
+    def __init__(self, iterable=0):
         """
         Initialize the CountedIterator with an iterable.
         
