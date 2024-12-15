@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
-import math
+import math import pi
 
 
 # Abstract class Shape
@@ -29,11 +29,12 @@ class Circle(Shape):
 
     def area(self):
         """Calculate and return the area of the circle."""
-        return math.pi * (self.radius ** 2)
+        return pi * (self.radius * self.radius)
 
     def perimeter(self):
         """Calculate and return the perimeter of the circle."""
-        return 2 * math.pi * self.radius
+        return abs((2 * self.radius) * pi)
+
 
 
 # Rectangle class inheriting Shape
