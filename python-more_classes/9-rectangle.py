@@ -180,6 +180,7 @@ class Rectangle():
         size (int): The size of the square (default is 0).
 
         Returns:
-        Rectangle: A new Rectangle instance with width and height equal to size.
+        Rectangle: A new Rectangle instance with width and
+        height equal to size.
         """
         return cls(size, size)
